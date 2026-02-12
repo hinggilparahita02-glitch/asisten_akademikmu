@@ -1,59 +1,139 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# 📚 Dokumentasi Project: Asisten Akademik Harian
 
-## About Laravel
+**Asisten Akademik Harian** adalah platform manajemen produktivitas mahasiswa yang dirancang untuk membantu pengelolaan waktu belajar, tugas, dan catatan dalam satu ekosistem terintegrasi.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 📖 Deskripsi
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Aplikasi ini membantu mahasiswa mengorganisir jadwal akademik mereka melalui fitur kalender tugas, pencatatan cepat, dan pengukur waktu belajar (*Study Timer*). 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Fitur Utama:
 
-## Learning Laravel
+* **Authentication**: Login sederhana menggunakan Nama dan Kelas.
+* **Dashboard Summary**: Ringkasan aktivitas harian (menit belajar, jumlah tugas, dan catatan terbaru).
+* **Manajemen Tugas (Kalender)**: Visualisasi deadline tugas dalam bentuk kalender interaktif.
+* **Study Timer**: Pengukur waktu belajar untuk membantu fokus mahasiswa.
+* **Catatan Cepat**: Fitur CRUD catatan dengan dukungan penyematan (*pin*) catatan penting.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### Tech Stack:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+* **Backend**: Laravel 11
+* **Database**: MySQL 8.0
+* **API Auth**: Laravel Sanctum (Token Based)
+* **Frontend Web**: TailwindCSS + Alpine.js
+* **Mobile (Planned)**: Android Studio (Retrofit + Java/Kotlin)
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 📋 User Story
 
-### Premium Partners
+| ID | User Story | Priority |
+| --- | --- | --- |
+| **US-01** | Sebagai user, saya ingin login hanya dengan nama dan kelas agar akses cepat | **High** |
+| **US-02** | Sebagai user, saya ingin melihat ringkasan tugas mendesak di dashboard | **High** |
+| **US-03** | Sebagai user, saya ingin mencatat ide/materi kuliah dengan fitur Catatan Cepat | **Medium** |
+| **US-04** | Sebagai user, saya ingin menggunakan timer saat belajar untuk melacak produktivitas | **Medium** |
+| **US-05** | Sebagai user, saya ingin melihat deadline tugas dalam tampilan kalender | **Low** |
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## 📝 SRS - Feature List
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+| ID | Feature | Deskripsi | Status |
+| --- | --- | --- | --- |
+| **FR-01** | API Login | Auth menggunakan Nama & Kelas via Sanctum | ✅ Done |
+| **FR-02** | Dashboard API | Mengambil ringkasan data user secara real-time | ✅ Done |
+| **FR-03** | Task Calendar | CRUD tugas dengan atribut tanggal deadline | ✅ Done |
+| **FR-04** | Study Timer | Menghitung durasi belajar dan menyimpan log | ✅ Done |
+| **FR-05** | Note System | CRUD catatan dengan fitur *Pin/Unpin* | ✅ Done |
+| **FR-06** | Mobile Integration | REST API siap dikonsumsi Android Studio | 🏗️ In Progress |
 
-## Code of Conduct
+---
+## Diagram ERD
+<img width="484" height="244" alt="image" src="https://github.com/user-attachments/assets/63b4cd3a-1346-4f56-a1f3-7c5cb88f150c" />
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Diagram Use Case
+<img width="260" height="308" alt="image" src="https://github.com/user-attachments/assets/fbb44eee-2a26-480d-a7a8-08a71883632a" />
 
-## Security Vulnerabilities
+## Diagram Sequence
+<img width="604" height="398" alt="image" src="https://github.com/user-attachments/assets/8103fcdf-2698-4ce7-b997-733cc935b88e" />
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+## 🎨 Mock-Up / Screenshots
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+1. **Halaman Login**: Form input Nama dan Kelas.
+   <img width="960" height="297" alt="Screenshot 2026-02-12 094749" src="https://github.com/user-attachments/assets/a36caa02-a3ba-4a28-a2ca-2f01860946be" />
+
+2. **Dashboard**: Widget ringkasan menit belajar dan tugas mendesak.
+   <img width="956" height="391" alt="Screenshot 2026-02-12 094803" src="https://github.com/user-attachments/assets/8b962021-6e6d-48c5-8447-c6a3e5d796ee" />
+
+3. **Kalender**: Tampilan grid tanggal dengan penanda tugas.
+   <img width="958" height="401" alt="Screenshot 2026-02-12 094818" src="https://github.com/user-attachments/assets/3e19cb8e-8cfc-47a7-ba06-a01dbf1f6b69" />
+
+4. **Study Timer**: Antarmuka jam, menit, detik untuk fokus belajar.
+   <img width="479" height="294" alt="Screenshot 2026-02-12 094838" src="https://github.com/user-attachments/assets/c2768645-faba-4e30-9404-7c40d45e0a6b" />
+
+5. **Catatan**: List catatan dengan kartu berwarna.
+   <img width="481" height="284" alt="Screenshot 2026-02-12 094850" src="https://github.com/user-attachments/assets/05c23527-bedc-4c0d-8efd-f779b4316e5b" />
+
+---
+
+## 🚀 Instalasi Backend
+
+### 1. Clone & Install
+
+```bash
+git clone https://github.com/username/academic-assistant.git
+cd academic-assistant
+composer install
+
+```
+
+### 2. Konfigurasi Database
+
+Buat database bernama `academic_assistant` di MySQL, lalu sesuaikan `.env`:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=academic_assistant
+DB_USERNAME=root
+DB_PASSWORD=
+
+```
+
+### 3. Migrasi & Jalankan
+
+```bash
+php artisan migrate
+php artisan serve
+
+```
+
+---
+
+## 📡 REST API Endpoints (v1)
+
+| Method | Endpoint | Deskripsi | Auth |
+| --- | --- | --- | --- |
+| `POST` | `/api/v1/auth/login` | Login & dapatkan Bearer Token | No |
+| `GET` | `/api/v1/dashboard/summary` | Ambil data ringkasan dashboard | **Yes** |
+| `GET` | `/api/v1/notes` | List semua catatan user | **Yes** |
+| `POST` | `/api/v1/tasks` | Tambah tugas baru ke kalender | **Yes** |
+
+**Contoh Response Login:**
+
+```json
+{
+  "token": "3|5pvpIY0lhm2ZUtQEndNOC...",
+  "user": {
+    "id": 3,
+    "name": "Hinggil Parahita",
+    "class": "II RKS A"
+  }
+}
+
+```
