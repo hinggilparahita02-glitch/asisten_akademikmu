@@ -28,11 +28,32 @@ Meskipun beberapa antarmuka dirancang sederhana untuk kecepatan akses (UX), tabe
 
 ---
 
-## 🛠️ Tech Stack
-* **Backend**: Laravel 11.
-* **Database**: MySQL 8.0.
-* **API Auth**: Laravel Sanctum (Token Based).
-* **Mobile**: Android Studio (Kotlin + Retrofit) dengan dukungan **Room Database** untuk sinkronisasi catatan offline.
+## 🧩 Tech Stack
+
+### 1. Backend & Frontend (Web)
+* **Framework**: Laravel 11.
+* **Bahasa Pemrograman**: PHP >= 8.2.
+* **Database**: MySQL / SQLite.
+* **Engine Template**: Blade Template.
+* **Styling**: TailwindCSS, HTML, dan CSS.
+* **Interaktivitas**: JavaScript.
+
+### 2. Mobile
+* **IDE**: Android Studio.
+* **Bahasa Pemrograman**: Kotlin.
+* **Komponen Utama**: Android WebView.
+* **Environment**: Emulator Pixel (API 33).
+
+### 3. Tools
+* **Version Control**: Git & GitHub.
+* **Local Server**: XAMPP.
+
+---
+
+## 🏗️ Arsitektur Sistem
+Sistem ini mengadopsi model *Client-Server* terpusat:
+* **Server-Side**: Seluruh logika bisnis, manajemen database, dan tampilan UI dikelola oleh Laravel menggunakan Blade Template.
+* **Client-Side (Mobile)**: Aplikasi Android bertindak sebagai *wrapper* atau kontainer menggunakan **WebView** untuk memuat URL server lokal/cloud.
 
 ---
 
