@@ -68,12 +68,100 @@ Metodologi yang digunakan: **Waterfall dengan iterasi**
 
 ---
 
-## ⚙️ Instalasi & Konfigurasi (Android)
-Untuk menjalankan versi Mobile pada perangkat lokal/emulator:
-1. Pastikan server Laravel berjalan menggunakan `php artisan serve`.
-2. Gunakan Base URL `http://10.0.2.2:8000/` pada `RetrofitClient` agar terhubung ke localhost laptop.
-3. Gunakan **Android API 30** untuk performa optimal pada perangkat spesifikasi terbatas.
+## 🏗️ Arsitektur Sistem (Client-Server)
+Sistem dikembangkan dengan memisahkan tanggung jawab antara *Frontend* Mobile dan *Backend* API:
 
-```kotlin
-// Contoh Konfigurasi Retrofit
-private const val BASE_URL = "[http://10.0.2.2:8000/](http://10.0.2.2:8000/)"
+* **Presentation Layer (Mobile App)**: Dikembangkan menggunakan Kotlin di Android Studio dengan arsitektur Fragment untuk navigasi yang efisien.
+* **Data Access Layer**: 
+    * **Remote**: Menggunakan library **Retrofit** untuk konsumsi RESTful API dari server Laravel.
+    * **Local Persistence**: Menggunakan **Android Room Database** untuk penyimpanan data `notes` secara offline demi performa yang lebih cepat.
+* **Backend Layer**: Laravel 11 sebagai penyedia layanan API (Auth, CRUD, Summary) dengan database MySQL 8.0.
+
+---
+
+## 📊 Rancangan UML & Database
+
+### 1. Entity Relationship Diagram (ERD)
+Berdasarkan skema database, sistem mengelola entitas sebagai berikut:
+* **Users**: Menyimpan identitas mahasiswa (Nama dan Kelas).
+* **Tasks**: Manajemen deadline tugas dengan status pengerjaan.
+* **Courses**: Tabel referensi mata kuliah, SKS, dan nilai yang menghubungkan tugas dan sesi belajar.
+* **Study Sessions**: Mencatat durasi fokus belajar mahasiswa yang terhubung ke mata kuliah spesifik.
+* **Notes**: Sistem catatan cepat dengan dukungan fitur *pinning* untuk prioritas.
+<img width="392" height="226" alt="image" src="https://github.com/user-attachments/assets/1e11f1d8-630e-4464-9ac4-4388418947cb" />
+
+
+### 2. Use Case Diagram
+* **Actor**: Mahasiswa (User).
+* **Fitur Utama**:
+    * **Authentication**: Login berbasis Nama & Kelas via Laravel Sanctum.
+    * **Dashboard**: Melihat ringkasan menit belajar dan jumlah tugas mendesak.
+    * **Manage Tasks**: Operasi CRUD pada jadwal tugas dan kalender.
+    * **Manage Notes**: Pengelolaan catatan harian secara offline/online.
+    * **Study Timer**: Melakukan sesi fokus belajar (Pomodoro).
+    <img width="1511" height="1208" alt="image" src="https://github.com/user-attachments/assets/3e612d36-874b-42e8-b1dc-a8622d707e2b" />
+
+
+### 3. Sequence Diagram (Alur Login & Sync)
+1.  User menginput kredensial di aplikasi Mobile.
+2.  Aplikasi mengirim request ke Endpoint `/api/v1/auth/login`.
+3.  Server Laravel memvalidasi dan mengembalikan **Bearer Token**.
+4.  Aplikasi menyimpan token dan melakukan sinkronisasi data Dashboard secara otomatis.
+<img width="2811" height="1690" alt="image" src="https://github.com/user-attachments/assets/9cfad74f-4bd1-4c7e-bcdd-377c417f6621" />
+
+---
+
+## 🛠️ Tech Stack
+* **Backend**: Laravel 11 & MySQL 8.0.
+* **Mobile**: Kotlin, Retrofit, Room Database, Material Design 3.
+* **Tools**: Android Studio, Git & GitHub, XAMPP.
+
+---
+
+## 📦 Instalasi
+
+### 1. Backend (Laravel)
+Pastikan PHP >= 8.2 dan Composer sudah terinstal.
+
+1. **Clone & Install**
+   ```bash
+   git clone <repository-url>
+   cd backend-folder
+   composer install
+Setup Environment
+
+Bash
+cp .env.example .env
+php artisan key:generate
+Konfigurasi Database
+Edit file .env dan sesuaikan dengan database MySQL Anda:
+
+Cuplikan kode
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nama_database
+DB_USERNAME=username
+DB_PASSWORD=password
+Migrasi & Run
+
+Bash
+php artisan migrate
+php artisan serve
+Akses di: http://localhost:8000.
+
+2. Mobile (Android)
+Gunakan Android Studio dengan Android API 30 untuk performa optimal pada spesifikasi laptop i3.
+
+Buka folder mobile di Android Studio.
+
+Edit file RetrofitClient.kt, ubah BASE_URL menjadi http://10.0.2.2:8000/ agar terhubung ke localhost laptop.
+
+Klik Sync Project with Gradle Files.
+
+Jalankan pada emulator atau perangkat fisik.
+
+---
+
+## 👤 Author
+**Hinggil Parahita**
