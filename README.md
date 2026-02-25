@@ -109,7 +109,8 @@ Berdasarkan skema database, sistem mengelola entitas sebagai berikut:
 * **Courses**: Tabel referensi mata kuliah, SKS, dan nilai yang menghubungkan tugas dan sesi belajar.
 * **Study Sessions**: Mencatat durasi fokus belajar mahasiswa yang terhubung ke mata kuliah spesifik.
 * **Notes**: Sistem catatan cepat dengan dukungan fitur *pinning* untuk prioritas.
-<img width="392" height="226" alt="image" src="https://github.com/user-attachments/assets/1e11f1d8-630e-4464-9ac4-4388418947cb" />
+* <img width="2215" height="1174" alt="image" src="https://github.com/user-attachments/assets/7279d850-f50a-4fc6-88b9-9c886e3ee58c" />
+
 
 
 ### 2. Use Case Diagram
@@ -130,59 +131,60 @@ Berdasarkan skema database, sistem mengelola entitas sebagai berikut:
 4.  Aplikasi menyimpan token dan melakukan sinkronisasi data Dashboard secara otomatis.
 <img width="2811" height="1690" alt="image" src="https://github.com/user-attachments/assets/9cfad74f-4bd1-4c7e-bcdd-377c417f6621" />
 
----
-
-## 🛠️ Tech Stack
-* **Backend**: Laravel 11 & MySQL 8.0.
-* **Mobile**: Kotlin, Retrofit, Room Database, Material Design 3.
-* **Tools**: Android Studio, Git & GitHub, XAMPP.
-
----
 
 ## 📦 Instalasi
 
-### 1. Backend (Laravel)
-Pastikan PHP >= 8.2 dan Composer sudah terinstal.
+### 1. Menjalankan Backend (Laravel)
+Pastikan Anda telah menginstal PHP >= 8.2, Composer, dan MySQL.
 
-1. **Clone & Install**
-   ```bash
-   git clone <repository-url>
-   cd backend-folder
-   composer install
-Setup Environment
+```bash
+# Clone repositori
+git clone [https://github.com/UsernameAnda/asisten-akademik.git](https://github.com/UsernameAnda/asisten-akademik.git)
+cd asisten-akademik/backend
 
-Bash
+# Install dependensi
+composer install
+
+# Setup Environment
 cp .env.example .env
 php artisan key:generate
-Konfigurasi Database
+```
+### 2. Konfigurasi Database
 Edit file .env dan sesuaikan dengan database MySQL Anda:
-
-Cuplikan kode
+```bash
+# Cuplikan kode
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=nama_database
 DB_USERNAME=username
 DB_PASSWORD=password
-Migrasi & Run
-
-Bash
+# Migrasi & Run
 php artisan migrate
 php artisan serve
 Akses di: http://localhost:8000.
-
+```
 2. Mobile (Android)
-Gunakan Android Studio dengan Android API 30 untuk performa optimal pada spesifikasi laptop i3.
+    a. Buka folder mobile menggunakan Android Studio.
+    b. Pastikan Anda menggunakan Android API 30 pada emulator untuk performa yang optimal.
+    c. Buka file RetrofitClient.kt dan pastikan BASE_URL mengarah ke localhost emulator:
+   ```bash
+   private const val BASE_URL = "[http://10.0.2.2:8000/](http://10.0.2.2:8000/)"
+    ```
+   d. Klik Sync Project with Gradle Files.
+   e. Jalankan aplikasi pada emulator dengan klik tombol Run (Shift + F10).
+---
+## 🧩 Mock Up
+<img width="754" height="468" alt="image" src="https://github.com/user-attachments/assets/5bd966a0-a2db-4506-b576-61e1b032ae18" />
+<img width="779" height="541" alt="image" src="https://github.com/user-attachments/assets/d1a10bc2-d77f-4bf4-a38f-2c5735fffb56" />
+<img width="794" height="617" alt="image" src="https://github.com/user-attachments/assets/571e611b-7fa5-48bf-8582-8d4a3fc430b1" />
+<img width="773" height="543" alt="image" src="https://github.com/user-attachments/assets/1ce16316-7013-4156-93c7-cd6e3b2d8f25" />
+<img width="759" height="501" alt="image" src="https://github.com/user-attachments/assets/52254433-3432-4373-8644-8136d7478c3a" />
 
-Buka folder mobile di Android Studio.
+<img width="817" height="708" alt="image" src="https://github.com/user-attachments/assets/d94490ff-75f4-47a1-899c-fd0ceefee9eb" />
 
-Edit file RetrofitClient.kt, ubah BASE_URL menjadi http://10.0.2.2:8000/ agar terhubung ke localhost laptop.
-
-Klik Sync Project with Gradle Files.
-
-Jalankan pada emulator atau perangkat fisik.
+<img width="808" height="537" alt="image" src="https://github.com/user-attachments/assets/48c58f1d-6f32-4c38-a20e-08db7f3d5140" />
 
 ---
-
 ## 👤 Author
 **Hinggil Parahita**
